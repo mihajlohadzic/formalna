@@ -14,7 +14,22 @@ checker a_checker (
 	stop5, 
 	er5, 
 	rdy5, 
-	start5
+	start5,
+	endd6,
+	stop6,
+	er6,
+	rdy6,
+	endd7,
+	start7,
+	status_valid7,
+	instartsv7,
+	rt8,
+	enable8,
+	rdy9,
+	start9,
+	interrupt9,
+	ack10,
+	req10
 	);
 
 	default
@@ -32,4 +47,11 @@ checker a_checker (
 	assert property (rt & pom |-> ~start & ~rdy & ~endd);
 	assert property (!(er2(*4));
 	assert property (er3 & rdy3 |-> (~er3 || ~rdy3));
+	assert property (start4 & ~rdy4) |-> rdy4;
+	assert property (endd5 || stop5 || er5) ##1 ~rdy5;
+	assert property (endd6 || stop6 || er6) & rdy6;
+	assert property (~status_valid7 & ~start7) |-> endd7;
+	assert property (rt8 & ~enable8) ##2 enable8;
+	assert property interrupt9 |-> (~rdy9 & ~start9);
+	assert property req10 ##5 ack10;
 endchecker
