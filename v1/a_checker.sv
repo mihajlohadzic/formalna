@@ -30,6 +30,6 @@ checker a_checker (
 	end
 	
 	assert property (rt & pom |-> ~start & ~rdy & ~endd);
-	assert property (er2 ##3 (~er2));
-	assert property (er3 & rdy3 |-> (er3 | rdy3));
+	assert property (!(er2(*4));
+	assert property (er3 & rdy3 |-> (~er3 || ~rdy3));
 endchecker
