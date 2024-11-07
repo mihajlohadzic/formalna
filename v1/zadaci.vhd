@@ -76,6 +76,12 @@ with cnt select
 	rdy3 <= '1' when "0001"|"0010"|"0101"|"1001", '0' when others;
 ----------------*********************************************************************
 with cnt select
+	start4 <= '1' when "0010", '0' when others;
+
+with cnt select
+	rdy4 <= '1' when "0110", '0' when others;
+
+with cnt select
 	endd5 <= '1' when "0010", '0' when others;
 
 with cnt select
